@@ -34,10 +34,10 @@ export default function PromotionClubJoinPage() {
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <Link
-          href="/#promotion-club"
+          href="/"
           className="inline-flex font-sans text-sm text-secondary/95 underline-offset-4 hover:text-secondary hover:underline"
         >
-          ← Back to Promotion Club
+          ← Back to Home
         </Link>
 
         <header className="mx-auto mt-8 max-w-3xl text-center md:mt-12">

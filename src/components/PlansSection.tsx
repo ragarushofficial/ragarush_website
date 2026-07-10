@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { WHATSAPP_MESSAGES, whatsappLink } from "@/lib/site";
 
 function HeadingSparkles() {
   return (
@@ -49,17 +49,21 @@ function HeadingSparklesRight() {
   );
 }
 
-const PLAN_START_SLUG = {
-  "Quick Song": "quick",
-  "Full Story Song": "full",
-  "Signature Experience": "signature",
+const PLAN_WHATSAPP_MESSAGE = {
+  "Quick Song": WHATSAPP_MESSAGES.quickSong,
+  "Full Story Song": WHATSAPP_MESSAGES.fullStorySong,
+  "Signature Experience": WHATSAPP_MESSAGES.signatureExperience,
+} as const;
+
+const PLAN_CTA_LABEL = {
+  "Quick Song": "Get This Plan",
+  "Full Story Song": "Choose This One",
+  "Signature Experience": "Go Signature",
 } as const;
 
 const PLANS = [
   {
     name: "Quick Song",
-    price: "999",
-    priceSuffix: "",
     badge: "🥉",
     popular: false,
     features: [
@@ -72,8 +76,6 @@ const PLANS = [
   },
   {
     name: "Full Story Song",
-    price: "2999",
-    priceSuffix: "",
     badge: "🥈",
     badgeExtra: "⭐",
     popular: true,
@@ -87,8 +89,6 @@ const PLANS = [
   },
   {
     name: "Signature Experience",
-    price: "6999",
-    priceSuffix: "Onwards",
     badge: "🥇",
     popular: false,
     features: [
@@ -182,18 +182,6 @@ export function PlansSection() {
 
               <h3 className="font-heading text-2xl text-cream md:text-[1.65rem]">{plan.name}</h3>
 
-              <p className="font-heading mt-4 flex flex-wrap items-baseline gap-1 text-secondary">
-                <span className="text-2xl font-medium text-secondary/95 md:text-3xl">₹</span>
-                <span className="text-[clamp(2.25rem,5vw,3rem)] font-semibold leading-none tracking-tight">
-                  {plan.price}
-                </span>
-                {plan.priceSuffix ? (
-                  <span className="font-sans ml-1.5 text-lg font-normal text-cream/80 md:text-xl">
-                    {plan.priceSuffix}
-                  </span>
-                ) : null}
-              </p>
-
               <ul className="mt-6 flex flex-1 flex-col gap-3">
                 {plan.features.map((f) => (
                   <FeatureRow key={f}>{f}</FeatureRow>
@@ -219,12 +207,14 @@ export function PlansSection() {
               )}
 
               <div className="mt-8">
-                <Link
-                  href={`/start?plan=${PLAN_START_SLUG[plan.name as keyof typeof PLAN_START_SLUG]}`}
+                <a
+                  href={whatsappLink(PLAN_WHATSAPP_MESSAGE[plan.name])}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="plan-choose-btn flex min-h-[44px] w-full items-center justify-center rounded-full py-3.5 text-center font-medium text-[#0d0a1a]"
                 >
-                  Choose Plan
-                </Link>
+                  {PLAN_CTA_LABEL[plan.name]}
+                </a>
               </div>
             </div>
           </article>

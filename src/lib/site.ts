@@ -42,3 +42,33 @@ export const SITE_LOGO_MARK_64 = {
   height: 64,
   alt: "Raga Rush logo",
 } as const;
+
+/** WhatsApp contact — preferred channel for Indian market. */
+export const WHATSAPP_NUMBER = "919970155508"; // no + or spaces, country code included
+
+export function whatsappLink(message: string): string {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+export const WHATSAPP_MESSAGES = {
+  heroGeneral:
+    "Hi Raga Rush! I'd like to create a personalized song. Can you tell me more about the process and pricing?",
+  businessAudio:
+    "Hi Raga Rush! I'm interested in brand/business audio (jingles, scoring, or sonic branding). Can we discuss my project?",
+  quickSong:
+    "Hi Raga Rush! I'm interested in the Quick Song plan. Can you share pricing and how to get started?",
+  fullStorySong:
+    "Hi Raga Rush! I'm interested in the Full Story Song plan. Can you share pricing and how to get started?",
+  signatureExperience:
+    "Hi Raga Rush! I'm interested in the Signature Experience plan. Can you share pricing and the details?",
+  footerGeneral:
+    "Hi Raga Rush! I'd like to create a song. Can you help me get started?",
+  promotionClub:
+    "Hi Raga Rush! I'd like to join the Promotion Club. How does registration work?",
+} as const;
+
+export const WHATSAPP_DISPLAY = "+91 9970155508";
+
+export const WHATSAPP_URL = whatsappLink(
+  "Hi Raga Rush! I'd like to know more about custom songs."
+);

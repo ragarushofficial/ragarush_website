@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Lora, Noto_Sans_Devanagari, Playfair_Display } from "next/font/google";
+import { FloatingWhatsAppButton } from "@/components/FloatingWhatsAppButton";
 import { OrganizationJsonLd } from "@/components/OrganizationJsonLd";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { ParallaxGradient } from "@/components/ParallaxGradient";
@@ -136,6 +137,7 @@ export default function RootLayout({
         <LoadingScreen />
         <SiteNavbar />
         {children}
+        <FloatingWhatsAppButton />
       </body>
     </html>
   );

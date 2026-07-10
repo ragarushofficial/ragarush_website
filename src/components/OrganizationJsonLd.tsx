@@ -1,4 +1,4 @@
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, WHATSAPP_NUMBER } from "@/lib/site";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -10,7 +10,7 @@ const structuredData = {
       description: SITE_DESCRIPTION,
       url: SITE_URL,
       image: `${SITE_URL}/og-image.png`,
-      telephone: "++919970155508",
+      telephone: `+${WHATSAPP_NUMBER}`,
       email: "hello@ragarush.studio",
       priceRange: "₹999–₹6999+",
       address: {

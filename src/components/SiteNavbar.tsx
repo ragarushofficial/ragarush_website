@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { RagaRushLogoSvg } from "@/components/brand/RagaRushLogoSvg";
-import { SITE_NAME } from "@/lib/site";
+import { WHATSAPP_MESSAGES, SITE_NAME, whatsappLink } from "@/lib/site";
 
 const navItems = [
   { href: "#home", label: "Home" },
+  { href: "#listen", label: "Listen" },
   { href: "#services", label: "Services" },
   { href: "#plans", label: "Plans" },
   { href: "#process", label: "Process" },
-  { href: "#promotion-club", label: "Promotion Club" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
@@ -78,7 +78,9 @@ export function SiteNavbar() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <a
-              href="/start"
+              href={whatsappLink(WHATSAPP_MESSAGES.heroGeneral)}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`cta-start-song inline-flex min-h-[44px] items-center justify-center rounded-full font-medium text-[#0d0a1a] transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] ${
                 scrolled ? "px-4 py-2 text-sm" : "px-5 py-2.5 text-[0.9375rem]"
               }`}
@@ -166,7 +168,9 @@ export function SiteNavbar() {
           </nav>
           <div className="border-t border-secondary/30 p-4">
             <a
-              href="/start"
+              href={whatsappLink(WHATSAPP_MESSAGES.heroGeneral)}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closeMobile}
               className="cta-start-song flex min-h-[44px] w-full items-center justify-center rounded-full py-3 font-medium text-[#0d0a1a]"
             >

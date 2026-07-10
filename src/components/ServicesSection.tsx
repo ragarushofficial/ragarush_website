@@ -1,40 +1,4 @@
-const SERVICES = [
-  {
-    icon: "💒",
-    title: "Your Story Song™",
-    description: "Weddings, birthdays, anniversaries, lullabies — bespoke songs that honour your milestones.",
-  },
-  {
-    icon: "✍️",
-    title: "Poem-to-Song (Kavita-to-Kriti)",
-    description: "Poetry to song in Marathi, Hindi, or English — your words, arranged with care.",
-  },
-  {
-    icon: "📣",
-    title: "Brand & Business Audio",
-    description: "Jingles, ads, corporate anthems, and podcast branding that sounds unmistakably you.",
-  },
-  {
-    icon: "🎸",
-    title: "Creator & Theme Music",
-    description: "Intros, outros, and themes across Sufi, Pop, Rock, Lo-fi, and beyond.",
-  },
-  {
-    icon: "🎭",
-    title: "Media & Performance Scoring",
-    description: "Theatre, short films, and dance — scores and stems, BPM-matched to movement.",
-  },
-  {
-    icon: "🧘",
-    title: "Wellness & Lifestyle Soundscapes",
-    description: "Gym, yoga, meditation, and focus music — immersive beds for body and mind.",
-  },
-  {
-    icon: "💌",
-    title: "Musical Invites & Tributes",
-    description: "Audio invitations and tribute songs crafted to move hearts before the first note fades.",
-  },
-] as const;
+import { ServicesTabbedGrid } from "@/components/ServicesTabbedGrid";
 
 function MandalaOverlay() {
   return (
@@ -121,31 +85,7 @@ export function ServicesSection() {
           </div>
         </header>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
-          {SERVICES.map((item, idx) => (
-            <article
-              key={item.title}
-              className={`service-card group relative flex flex-col rounded-2xl border border-white/12 bg-white/[0.06] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md md:p-7 ${
-                idx === 6
-                  ? "sm:col-span-2 sm:mx-auto sm:max-w-lg lg:col-span-1 lg:mx-0 lg:max-w-none lg:[&:nth-child(7)]:col-start-2"
-                  : ""
-              }`}
-            >
-              <div
-                className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-secondary/35 bg-secondary/10 text-2xl shadow-[0_0_20px_rgba(212,168,67,0.18)]"
-                aria-hidden
-              >
-                <span className="drop-shadow-[0_0_8px_rgba(212,168,67,0.45)]">{item.icon}</span>
-              </div>
-              <h3 className="font-heading text-xl leading-snug text-cream md:text-[1.35rem]">
-                {item.title}
-              </h3>
-              <p className="font-sans mt-3 text-[0.95rem] leading-relaxed text-cream/84 md:text-base md:leading-relaxed">
-                {item.description}
-              </p>
-            </article>
-          ))}
-        </div>
+        <ServicesTabbedGrid />
       </div>
     </section>
   );

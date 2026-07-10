@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import { RagaRushMarkImg } from "@/components/brand/RagaRushMarkImg";
+import { WHATSAPP_DISPLAY, whatsappLink } from "@/lib/site";
 import { OrderSuccessCheckmark } from "./OrderSuccessCheckmark";
-
-const WHATSAPP_DISPLAY = "+91 98765 43210";
-const WHATSAPP_E164 = "919876543210";
 
 type OrderSuccessContentProps = {
   firstName: string;
@@ -27,9 +25,12 @@ export function OrderSuccessContent({
   onBackHome,
   variant = "page",
 }: OrderSuccessContentProps) {
-  const waHref = `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(
+  const continueOnWhatsAppHref = whatsappLink(
+    `Hi, I just submitted a song request — my name is ${firstName}.`
+  );
+  const questionsWaHref = whatsappLink(
     `Hi Raga Rush — I just submitted order ${orderId}. I have a question.`
-  )}`;
+  );
 
   const shell =
     variant === "modal"
@@ -87,7 +88,7 @@ export function OrderSuccessContent({
         <p className="font-sans mt-6 text-sm leading-relaxed text-cream/72">
           Questions? WhatsApp us at{" "}
           <a
-            href={waHref}
+            href={questionsWaHref}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-secondary underline-offset-2 transition-colors hover:text-[#e8c97a] hover:underline"
@@ -96,22 +97,32 @@ export function OrderSuccessContent({
           </a>
         </p>
 
-        {onBackHome ? (
-          <button
-            type="button"
-            onClick={onBackHome}
-            className="cta-start-song no-btn-glow mt-10 inline-flex min-h-[48px] w-full max-w-xs items-center justify-center rounded-full px-10 font-semibold text-[#0d0a1a] transition-transform hover:scale-[1.02] sm:w-auto"
+        <div className="mt-10 flex flex-col items-center gap-3">
+          {onBackHome ? (
+            <button
+              type="button"
+              onClick={onBackHome}
+              className="cta-start-song no-btn-glow inline-flex min-h-[48px] w-full max-w-xs items-center justify-center rounded-full px-10 font-semibold text-[#0d0a1a] transition-transform hover:scale-[1.02] sm:w-auto"
+            >
+              Back to Home
+            </button>
+          ) : (
+            <Link
+              href="/"
+              className="cta-start-song no-btn-glow inline-flex min-h-[48px] w-full max-w-xs items-center justify-center rounded-full px-10 font-semibold text-[#0d0a1a] transition-transform hover:scale-[1.02] sm:w-auto"
+            >
+              Back to Home
+            </Link>
+          )}
+          <a
+            href={continueOnWhatsAppHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[48px] w-full max-w-xs items-center justify-center gap-2 rounded-full border border-[#25D366]/60 bg-[#25D366]/10 px-8 font-semibold text-[#25D366] transition-colors hover:bg-[#25D366]/20 sm:w-auto"
           >
-            Back to Home
-          </button>
-        ) : (
-          <Link
-            href="/"
-            className="cta-start-song no-btn-glow mt-10 inline-flex min-h-[48px] w-full max-w-xs items-center justify-center rounded-full px-10 font-semibold text-[#0d0a1a] transition-transform hover:scale-[1.02] sm:w-auto"
-          >
-            Back to Home
-          </Link>
-        )}
+            Continue on WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   );

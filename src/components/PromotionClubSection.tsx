@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Fragment } from "react";
+import { WHATSAPP_MESSAGES, whatsappLink } from "@/lib/site";
 
 const FLOW_STEPS = [
   "Register",
@@ -151,8 +151,10 @@ export function PromotionClubSection() {
 
         {/* E) CTA */}
         <div className="mt-10 flex justify-center">
-          <Link
-            href="/promotion-club/join"
+          <a
+            href={whatsappLink(WHATSAPP_MESSAGES.promotionClub)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="club-join-cta group relative inline-flex min-h-[44px] w-full max-w-md items-center justify-center overflow-hidden rounded-full px-10 py-3 font-medium text-[#0d0a1a] sm:w-auto sm:max-w-none md:min-h-[3.25rem] md:px-12"
           >
             <span
@@ -161,7 +163,7 @@ export function PromotionClubSection() {
             >
               ✦
             </span>
-            <span className="relative z-10 px-6">Join the Club</span>
+            <span className="relative z-10 px-6">Join Now</span>
             <span
               className="pointer-events-none absolute right-3 text-base text-cream/95 opacity-0 transition-all duration-300 group-hover:-translate-x-0.5 group-hover:opacity-100 md:right-4"
               aria-hidden
@@ -173,7 +175,7 @@ export function PromotionClubSection() {
               <span className="club-join-sparkle club-join-sparkle--delay" />
               <span className="club-join-sparkle club-join-sparkle--delay2" />
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     </section>

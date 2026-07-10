@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/HeroSection";
+import { ListenFirstSection } from "@/components/ListenFirstSection";
 import { SectionReveal } from "@/components/SectionReveal";
 
 const ServicesSection = dynamic(
@@ -9,6 +10,13 @@ const ServicesSection = dynamic(
 );
 const WhyRagaRush = dynamic(
   () => import("@/components/WhyRagaRush").then((m) => ({ default: m.WhyRagaRush })),
+  { ssr: true }
+);
+const TestimonialsSection = dynamic(
+  () =>
+    import("@/components/TestimonialsSection").then((m) => ({
+      default: m.TestimonialsSection,
+    })),
   { ssr: true }
 );
 const PlansSection = dynamic(
@@ -30,13 +38,15 @@ const DeliverySection = dynamic(
   () => import("@/components/DeliverySection").then((m) => ({ default: m.DeliverySection })),
   { ssr: true }
 );
-const PromotionClubSection = dynamic(
-  () =>
-    import("@/components/PromotionClubSection").then((m) => ({ default: m.PromotionClubSection })),
-  { ssr: true }
-);
 const OurPromiseSection = dynamic(
   () => import("@/components/OurPromiseSection").then((m) => ({ default: m.OurPromiseSection })),
+  { ssr: true }
+);
+const PromotionClubBanner = dynamic(
+  () =>
+    import("@/components/PromotionClubBanner").then((m) => ({
+      default: m.PromotionClubBanner,
+    })),
   { ssr: true }
 );
 const ContactCTAFooter = dynamic(
@@ -63,11 +73,19 @@ export default function Home() {
 
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-24 px-4 py-16 sm:gap-28 sm:px-6 md:gap-32 md:px-12 md:py-24">
         <SectionReveal>
+          <ListenFirstSection />
+        </SectionReveal>
+
+        <SectionReveal>
           <ServicesSection />
         </SectionReveal>
 
         <SectionReveal>
           <WhyRagaRush />
+        </SectionReveal>
+
+        <SectionReveal>
+          <TestimonialsSection />
         </SectionReveal>
 
         <SectionReveal>
@@ -87,11 +105,11 @@ export default function Home() {
         </SectionReveal>
 
         <SectionReveal>
-          <PromotionClubSection />
+          <OurPromiseSection />
         </SectionReveal>
 
         <SectionReveal>
-          <OurPromiseSection />
+          <PromotionClubBanner />
         </SectionReveal>
       </div>
 
